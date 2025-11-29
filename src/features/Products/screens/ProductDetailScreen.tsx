@@ -36,7 +36,7 @@ const ProductDetailScreen: React.FC<Props> = ({ route, navigation }) => {
 
     // Get accurate product name
     const productName = product.name || (product as any).title || 'Sản phẩm không tên';
-    const productDescription = (product as any).description || `Mô tả sản phẩm: ${productName} là một loại rượu vang cao cấp, mang lại trải nghiệm hương vị tinh tế và đáng nhớ.`;
+    const productDescription = (product as any).description || `Mô tả sản phẩm: ${productName} chất lượng cao.`;
 
     const getImageSource = (img?: string) => {
         const cleanImg = img?.trim();
@@ -87,12 +87,6 @@ const ProductDetailScreen: React.FC<Props> = ({ route, navigation }) => {
                         <TouchableOpacity style={[styles.button, styles.buyButton]} onPress={handleBuyNow}>
                             <Text style={styles.buttonText}>Mua ngay</Text>
                         </TouchableOpacity>
-                    </View>
-                    {/* Placeholder for detailed information (e.g., Origin, Year, Type) */}
-                    <View style={styles.infoBox}>
-                        <Text style={styles.infoText}>🍇 Loại: Vang Đỏ</Text>
-                        <Text style={styles.infoText}>🇫🇷 Xuất xứ: Bordeaux</Text>
-                        <Text style={styles.infoText}>📅 Vintage: 2018</Text>
                     </View>
 
                     <Text style={styles.descriptionHeader}>Mô tả chi tiết</Text>

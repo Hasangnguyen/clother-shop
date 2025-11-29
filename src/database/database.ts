@@ -64,7 +64,7 @@ const getDatabase = () => {
 
 const initialCategories: Category[] = [
     { id: 1, name: 'Quần', iconUri: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400' },
-    { id: 2, name: 'Áo', iconUri: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400' },
+    { id: 2, name: 'Áo', iconUri: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400' },
     { id: 3, name: 'Túi', iconUri: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400' },
     { id: 4, name: 'Giày', iconUri: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400' },
     { id: 5, name: 'Váy', iconUri: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400' },
@@ -75,52 +75,52 @@ const initialCategories: Category[] = [
 const initialProducts: Product[] = [
     // Quần (Category 1)
     { id: 1, name: 'Quần Jeans Nữ Ống Rộng', price: 550000, img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400', categoryId: 1 },
-    { id: 2, name: 'Quần Kaki Nữ Công Sở', price: 450000, img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400', categoryId: 1 },
-    { id: 3, name: 'Quần Legging Nữ', price: 380000, img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400', categoryId: 1 },
-    { id: 4, name: 'Quần Short Nữ Thể Thao', price: 320000, img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400', categoryId: 1 },
-    { id: 5, name: 'Quần Ống Loe Nữ', price: 480000, img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400', categoryId: 1 },
+    { id: 2, name: 'Quần Kaki Nữ Công Sở', price: 450000, img: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400', categoryId: 1 },
+    { id: 3, name: 'Quần Legging Nữ', price: 380000, img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400', categoryId: 1 },
+    { id: 4, name: 'Quần Short Nữ Thể Thao', price: 320000, img: 'https://images.unsplash.com/photo-1506629905607-0a5e2c0c8b8d?w=400&auto=format&fit=crop', categoryId: 1 },
+    { id: 5, name: 'Quần Ống Loe Nữ', price: 480000, img: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400', categoryId: 1 },
     
     // Áo (Category 2) - Feminine styles
     { id: 6, name: 'Áo Thun Nữ Cổ Tròn', price: 350000, img: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400', categoryId: 2 },
-    { id: 7, name: 'Áo Sơ Mi Nữ Công Sở', price: 400000, img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400', categoryId: 2 },
-    { id: 8, name: 'Áo Kiểu Nữ Tay Ngắn', price: 420000, img: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400', categoryId: 2 },
-    { id: 9, name: 'Áo Ba Lỗ Nữ', price: 280000, img: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400', categoryId: 2 },
-    { id: 10, name: 'Áo Len Nữ Cổ Lọ', price: 520000, img: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400', categoryId: 2 },
+    { id: 7, name: 'Áo Sơ Mi Nữ Công Sở', price: 400000, img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&auto=format&fit=crop', categoryId: 2 },
+    { id: 8, name: 'Áo Kiểu Nữ Tay Ngắn', price: 420000, img: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&auto=format&fit=crop', categoryId: 2 },
+    { id: 9, name: 'Áo Ba Lỗ Nữ', price: 280000, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&auto=format&fit=crop', categoryId: 2 },
+    { id: 10, name: 'Áo Len Nữ Cổ Lọ', price: 520000, img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&auto=format&fit=crop', categoryId: 2 },
     
     // Túi (Category 3)
     { id: 11, name: 'Túi Xách Da Nữ', price: 1200000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', categoryId: 3 },
-    { id: 12, name: 'Túi Đeo Chéo Nữ', price: 800000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', categoryId: 3 },
-    { id: 13, name: 'Túi Tote Nữ', price: 650000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', categoryId: 3 },
-    { id: 14, name: 'Túi Mini Nữ', price: 450000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', categoryId: 3 },
-    { id: 15, name: 'Túi Backpack Nữ', price: 750000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', categoryId: 3 },
+    { id: 12, name: 'Túi Đeo Chéo Nữ', price: 800000, img: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400', categoryId: 3 },
+    { id: 13, name: 'Túi Tote Nữ', price: 650000, img: 'https://images.unsplash.com/photo-1564422170191-4bd349a2f69d?w=400&auto=format&fit=crop', categoryId: 3 },
+    { id: 14, name: 'Túi Mini Nữ', price: 450000, img: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&auto=format&fit=crop', categoryId: 3 },
+    { id: 15, name: 'Túi Backpack Nữ', price: 750000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 3 },
     
     // Giày (Category 4) - Mostly high heels
     { id: 16, name: 'Giày Cao Gót Đen', price: 900000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400', categoryId: 4 },
-    { id: 17, name: 'Giày Cao Gót Đỏ', price: 950000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400', categoryId: 4 },
-    { id: 18, name: 'Giày Cao Gót Nude', price: 880000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400', categoryId: 4 },
-    { id: 19, name: 'Giày Cao Gót Stiletto', price: 1200000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400', categoryId: 4 },
-    { id: 20, name: 'Giày Cao Gót Mũi Nhọn', price: 1100000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400', categoryId: 4 },
+    { id: 17, name: 'Giày Cao Gót Đỏ', price: 950000, img: 'https://images.unsplash.com/photo-1605812860427-4014439f7033?w=400&auto=format&fit=crop', categoryId: 4 },
+    { id: 18, name: 'Giày Cao Gót Nude', price: 880000, img: 'https://images.unsplash.com/photo-1608256246200-53e6092b7132?w=400&auto=format&fit=crop', categoryId: 4 },
+    { id: 19, name: 'Giày Cao Gót Stiletto', price: 1200000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&auto=format&fit=crop', categoryId: 4 },
+    { id: 20, name: 'Giày Cao Gót Mũi Nhọn', price: 1100000, img: 'https://images.unsplash.com/photo-1605812860427-4014439f7033?w=400&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8', categoryId: 4 },
     
     // Váy (Category 5)
     { id: 21, name: 'Váy Liền Thân', price: 650000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400', categoryId: 5 },
-    { id: 22, name: 'Váy Xòe Nữ', price: 720000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400', categoryId: 5 },
-    { id: 23, name: 'Váy Ôm Body Nữ', price: 580000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400', categoryId: 5 },
-    { id: 24, name: 'Váy Dài Nữ', price: 850000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400', categoryId: 5 },
-    { id: 25, name: 'Váy Ngắn Nữ', price: 480000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400', categoryId: 5 },
+    { id: 22, name: 'Váy Xòe Nữ', price: 720000, img: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 5 },
+    { id: 23, name: 'Váy Ôm Body Nữ', price: 580000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&ixlib=rb-4.0.3', categoryId: 5 },
+    { id: 24, name: 'Váy Dài Nữ', price: 850000, img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 5 },
+    { id: 25, name: 'Váy Ngắn Nữ', price: 480000, img: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 5 },
     
     // Phụ kiện (Category 6)
     { id: 26, name: 'Vòng Tay Nữ', price: 250000, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400', categoryId: 6 },
-    { id: 27, name: 'Dây Chuyền Nữ', price: 380000, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400', categoryId: 6 },
-    { id: 28, name: 'Bông Tai Nữ', price: 320000, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400', categoryId: 6 },
-    { id: 29, name: 'Kính Mát Nữ', price: 450000, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400', categoryId: 6 },
-    { id: 30, name: 'Thắt Lưng Nữ', price: 280000, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400', categoryId: 6 },
+    { id: 27, name: 'Dây Chuyền Nữ', price: 380000, img: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400', categoryId: 6 },
+    { id: 28, name: 'Bông Tai Nữ', price: 320000, img: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400', categoryId: 6 },
+    { id: 29, name: 'Kính Mát Nữ', price: 450000, img: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400', categoryId: 6 },
+    { id: 30, name: 'Thắt Lưng Nữ', price: 280000, img: 'https://images.unsplash.com/photo-1624378515193-8c963b1e2a53?w=400', categoryId: 6 },
     
     // Áo khoác (Category 7)
     { id: 31, name: 'Áo Khoác Kaki Nữ', price: 680000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', categoryId: 7 },
-    { id: 32, name: 'Áo Khoác Dù Nữ', price: 550000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', categoryId: 7 },
-    { id: 33, name: 'Áo Khoác Len Nữ', price: 750000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', categoryId: 7 },
-    { id: 34, name: 'Áo Khoác Bomber Nữ', price: 620000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', categoryId: 7 },
-    { id: 35, name: 'Áo Khoác Blazer Nữ', price: 850000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', categoryId: 7 },
+    { id: 32, name: 'Áo Khoác Dù Nữ', price: 550000, img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400', categoryId: 7 },
+    { id: 33, name: 'Áo Khoác Len Nữ', price: 750000, img: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400', categoryId: 7 },
+    { id: 34, name: 'Áo Khoác Bomber Nữ', price: 620000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 7 },
+    { id: 35, name: 'Áo Khoác Blazer Nữ', price: 850000, img: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400', categoryId: 7 },
 ];
 
 
@@ -235,7 +235,8 @@ export const initializeDatabase = async (callback: () => void) => {
             );
         } else {
             // If database already has data, only add new categories if they don't exist
-            console.log('Checking for new categories to add...');
+            // Also update iconUri for existing categories to ensure they have the latest images
+            console.log('Checking for new categories to add and updating existing ones...');
             for (const cat of initialCategories) {
                 const existing = await db.getAllAsync('SELECT id FROM categories WHERE id = ?;', [cat.id]);
                 if (existing.length === 0) {
@@ -245,10 +246,18 @@ export const initializeDatabase = async (callback: () => void) => {
                     } catch (error) {
                         console.log(`Category ${cat.name} might already exist or ID conflict`);
                     }
+                } else {
+                    // Update iconUri for existing categories
+                    try {
+                        await db.runAsync('UPDATE categories SET iconUri = ? WHERE id = ?;', [cat.iconUri ?? null, cat.id]);
+                        console.log(`Updated iconUri for category: ${cat.name}`);
+                    } catch (error) {
+                        console.log(`Error updating category ${cat.name}:`, error);
+                    }
                 }
             }
             
-            // Add new products if they don't exist
+            // Add new products if they don't exist, also update images for existing products
             for (const prod of initialProducts) {
                 const existing = await db.getAllAsync('SELECT id FROM products WHERE id = ?;', [prod.id]);
                 if (existing.length === 0) {
@@ -257,6 +266,14 @@ export const initializeDatabase = async (callback: () => void) => {
                         console.log(`Added new product: ${prod.name}`);
                     } catch (error) {
                         console.log(`Product ${prod.name} might already exist or ID conflict`);
+                    }
+                } else {
+                    // Update image for existing products to ensure they have the latest images
+                    try {
+                        await db.runAsync('UPDATE products SET img = ? WHERE id = ?;', [prod.img, prod.id]);
+                        console.log(`Updated image for product: ${prod.name}`);
+                    } catch (error) {
+                        console.log(`Error updating product ${prod.name}:`, error);
                     }
                 }
             }
