@@ -6,9 +6,12 @@ import {
     TouchableOpacity,
     TextInput,
     Alert,
+    ScrollView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { MaterialIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useAuth } from '../../../context/AuthContext';
 import { getUserByUsername } from '../../../database/database';
 
@@ -91,42 +94,128 @@ export default function UserScreen() {
     return (
         <View style={styles.container}>
             <AppHeader />
-            <View style={styles.userContainer}>
-                <Text style={styles.heading}>Chào mừng, {user}!</Text>
-                <Text style={styles.roleText}>
-                    {isAdmin ? 'Bạn là quản trị viên' : 'Bạn là người dùng thông thường'}
-                </Text>
-                {isAdmin && (
-                    <TouchableOpacity style={styles.adminButton} onPress={() => navigation.navigate('Admin')}>
-                        <Text style={styles.adminButtonText}>Vào Bảng Điều Khiển Admin</Text>
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                {/* Header Section with Gradient */}
+                <LinearGradient
+                    colors={['#ff69b4', '#ff8dc7']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={styles.headerGradient}
+                >
+                    <View style={styles.avatarContainer}>
+                        <View style={styles.avatar}>
+                            <MaterialIcons name="person" size={40} color="#ff69b4" />
+                        </View>
+                    </View>
+                    <Text style={styles.welcomeText}>Chào mừng</Text>
+                    <Text style={styles.usernameText}>{user}</Text>
+                    <View style={styles.roleBadge}>
+                        <MaterialIcons 
+                            name={isAdmin ? "admin-panel-settings" : "person"} 
+                            size={16} 
+                            color="#fff" 
+                        />
+                        <Text style={styles.roleText}>
+                            {isAdmin ? 'Quản trị viên' : 'Người dùng'}
+                        </Text>
+                    </View>
+                </LinearGradient>
+
+                {/* Quick Actions */}
+                <View style={styles.quickActions}>
+                    {isAdmin && (
+                        <TouchableOpacity 
+                            style={styles.actionCard} 
+                            onPress={() => navigation.navigate('Admin')}
+                        >
+                            <LinearGradient
+                                colors={['#ff69b4', '#ff8dc7']}
+                                style={styles.actionIconContainer}
+                            >
+                                <MaterialIcons name="dashboard" size={24} color="#fff" />
+                            </LinearGradient>
+                            <Text style={styles.actionText}>Bảng Điều Khiển</Text>
+                        </TouchableOpacity>
+                    )}
+
+                    <TouchableOpacity 
+                        style={styles.actionCard} 
+                        onPress={() => navigation.navigate('OrderHistory')}
+                    >
+                        <LinearGradient
+                            colors={['#28a745', '#34ce57']}
+                            style={styles.actionIconContainer}
+                        >
+                            <MaterialIcons name="receipt" size={24} color="#fff" />
+                        </LinearGradient>
+                        <Text style={styles.actionText}>Lịch Sử Đơn Hàng</Text>
                     </TouchableOpacity>
-                )}
 
-                <TouchableOpacity style={styles.orderHistoryButton} onPress={() => navigation.navigate('OrderHistory')}>
-                    <Text style={styles.orderHistoryText}>📋 Xem Lịch Sử Đơn Hàng</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.aboutButton} onPress={() => navigation.navigate('About')}>
-                    <Text style={styles.aboutText}>ℹ️ Về Chúng Tôi</Text>
-                </TouchableOpacity>
-
-                <View style={styles.profileForm}>
-                    <Text style={{ fontWeight: '600', marginBottom: 6 }}>Số điện thoại</Text>
-                    <TextInput value={phone} onChangeText={setPhone} style={styles.input} keyboardType="phone-pad" />
-
-                    <Text style={{ fontWeight: '600', marginBottom: 6 }}>Mật khẩu mới</Text>
-                    <TextInput value={newPassword} onChangeText={setNewPassword} style={styles.input} secureTextEntry />
-
-                    <TouchableOpacity style={styles.updateButton} onPress={handleUpdate} disabled={loading}>
-                        <Text style={styles.updateText}>{loading ? 'Đang cập nhật...' : 'Cập nhật thông tin'}</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.logoutButton} onPress={logout}>
-                        <Text style={styles.logoutText}>Đăng Xuất</Text>
+                    <TouchableOpacity 
+                        style={styles.actionCard} 
+                        onPress={() => navigation.navigate('About')}
+                    >
+                        <LinearGradient
+                            colors={['#17a2b8', '#20c9e7']}
+                            style={styles.actionIconContainer}
+                        >
+                            <MaterialIcons name="info" size={24} color="#fff" />
+                        </LinearGradient>
+                        <Text style={styles.actionText}>Về Chúng Tôi</Text>
                     </TouchableOpacity>
                 </View>
 
-            </View>
+                {/* Profile Form */}
+                <View style={styles.profileForm}>
+                    <Text style={styles.sectionTitle}>Thông Tin Cá Nhân</Text>
+                    
+                    <View style={styles.inputGroup}>
+                        <View style={styles.labelContainer}>
+                            <MaterialIcons name="phone" size={18} color="#ff69b4" />
+                            <Text style={styles.label}>Số điện thoại</Text>
+                        </View>
+                        <TextInput 
+                            value={phone} 
+                            onChangeText={setPhone} 
+                            style={styles.input} 
+                            keyboardType="phone-pad"
+                            placeholder="Nhập số điện thoại"
+                            placeholderTextColor="#999"
+                        />
+                    </View>
+
+                    <View style={styles.inputGroup}>
+                        <View style={styles.labelContainer}>
+                            <MaterialIcons name="lock" size={18} color="#ff69b4" />
+                            <Text style={styles.label}>Mật khẩu mới</Text>
+                        </View>
+                        <TextInput 
+                            value={newPassword} 
+                            onChangeText={setNewPassword} 
+                            style={styles.input} 
+                            secureTextEntry
+                            placeholder="Nhập mật khẩu mới"
+                            placeholderTextColor="#999"
+                        />
+                    </View>
+
+                    <TouchableOpacity 
+                        style={styles.updateButton} 
+                        onPress={handleUpdate} 
+                        disabled={loading}
+                    >
+                        <MaterialIcons name="save" size={20} color="#fff" />
+                        <Text style={styles.updateText}>
+                            {loading ? 'Đang cập nhật...' : 'Cập nhật thông tin'}
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.logoutButton} onPress={logout}>
+                        <MaterialIcons name="logout" size={20} color="#fff" />
+                        <Text style={styles.logoutText}>Đăng Xuất</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
             <AppFooter activeScreen="User" />
         </View>
     );
@@ -135,8 +224,164 @@ export default function UserScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#f5f5f5',
     },
+    scrollView: {
+        flex: 1,
+    },
+    headerGradient: {
+        paddingTop: 30,
+        paddingBottom: 40,
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+    },
+    avatarContainer: {
+        marginBottom: 15,
+    },
+    avatar: {
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 5,
+    },
+    welcomeText: {
+        fontSize: 18,
+        color: '#fff',
+        fontWeight: '500',
+        marginBottom: 5,
+    },
+    usernameText: {
+        fontSize: 28,
+        color: '#fff',
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    roleBadge: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+        paddingHorizontal: 16,
+        paddingVertical: 6,
+        borderRadius: 20,
+        gap: 6,
+    },
+    roleText: {
+        fontSize: 14,
+        color: '#fff',
+        fontWeight: '600',
+    },
+    quickActions: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingHorizontal: 20,
+        paddingVertical: 20,
+        gap: 12,
+    },
+    actionCard: {
+        flex: 1,
+        backgroundColor: '#fff',
+        borderRadius: 16,
+        padding: 16,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
+        gap: 8,
+    },
+    actionIconContainer: {
+        width: 56,
+        height: 56,
+        borderRadius: 28,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    actionText: {
+        fontSize: 12,
+        fontWeight: '600',
+        color: '#333',
+        textAlign: 'center',
+    },
+    profileForm: {
+        backgroundColor: '#fff',
+        marginHorizontal: 20,
+        marginBottom: 20,
+        padding: 20,
+        borderRadius: 16,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
+    },
+    sectionTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 20,
+    },
+    inputGroup: {
+        marginBottom: 20,
+    },
+    labelContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        marginBottom: 8,
+    },
+    label: {
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#333',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#e0e0e0',
+        borderRadius: 12,
+        padding: 14,
+        fontSize: 16,
+        backgroundColor: '#fafafa',
+    },
+    updateButton: {
+        backgroundColor: '#28a745',
+        padding: 14,
+        borderRadius: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+        marginBottom: 12,
+    },
+    updateText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    logoutButton: {
+        backgroundColor: '#dc3545',
+        padding: 14,
+        borderRadius: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+    },
+    logoutText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    // Auth screen styles (keep existing)
     heading: {
         fontSize: 22,
         fontWeight: 'bold',
@@ -169,10 +414,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textDecorationLine: 'underline',
     },
-    userContainer: {
-        flex: 1,
-        paddingHorizontal: 20,
-    },
     button: {
         backgroundColor: '#ff69b4',
         padding: 15,
@@ -199,91 +440,4 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
-    logoutButton: {
-        backgroundColor: '#dc3545',
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-        marginBottom: 20,
-        width: '80%',
-    },
-    logoutText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    roleText: {
-        fontSize: 16,
-        color: '#666',
-        textAlign: 'center',
-        marginVertical: 10,
-    },
-    adminButton: {
-        backgroundColor: '#ff69b4',
-        padding: 12,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginBottom: 15,
-        width: '80%',
-    },
-    adminButtonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    profileForm: {
-        backgroundColor: '#fff',
-        padding: 15,
-        borderRadius: 8,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.1,
-        shadowRadius: 2,
-        elevation: 2,
-        marginTop: 10,
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: '#ddd',
-        borderRadius: 6,
-        padding: 10,
-        marginBottom: 12,
-    },
-    updateButton: {
-        backgroundColor: '#28a745',
-        padding: 12,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginBottom: 10,
-    },
-    updateText: {
-        color: '#fff',
-        fontWeight: 'bold',
-    },
-    orderHistoryButton: {
-        backgroundColor: '#ff69b4',
-        padding: 12,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginBottom: 15,
-        width: '80%',
-    },
-    orderHistoryText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    aboutButton: {
-        backgroundColor: '#17a2b8',
-        padding: 12,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginBottom: 15,
-        width: '80%',
-    },
-    aboutText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-    }
 });
