@@ -189,7 +189,7 @@ export default function CategoryManagement() {
                 />
             </View>
 
-            <AppFooter activeScreen="Home" />
+            <AppFooter activeScreen="CategoryManagement" />
         </View>
     );
 }

@@ -59,19 +59,6 @@ export default function AppHeader() {
                     )}
                 </View>
             </View>
-
-            {/* Thanh truy cập Admin - Chỉ hiển thị nếu là admin */}
-            {isAdmin && (
-                <TouchableOpacity
-                    style={{ padding: 10, backgroundColor: '#ff69b4', borderRadius: 0 }}
-                    onPress={() => navigation.navigate('Admin')}
-                >
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-                        <MaterialIcons name="admin-panel-settings" size={18} color="#fff" />
-                        <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#fff' }}>Trang Admin (Quản lý)</Text>
-                    </View>
-                </TouchableOpacity>
-            )}
         </View>
     );
 }

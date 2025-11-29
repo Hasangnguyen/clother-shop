@@ -46,10 +46,10 @@ function AdminNavItem({ label, iconName, isActive, screen }: AdminNavItemProps) 
                 <MaterialIcons 
                     name={iconName} 
                     size={22} 
-                    color={isActive ? '#dc3545' : '#666'} 
+                    color={isActive ? '#ff69b4' : '#666'} 
                 />
             </View>
-            <Text style={[styles.navText, isActive && styles.activeText, isActive && { color: '#dc3545' }]}>
+            <Text style={[styles.navText, isActive && styles.activeText, isActive && { color: '#ff69b4' }]}>
                 {label}
             </Text>
         </TouchableOpacity>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     bottomNavContainer: {
         backgroundColor: '#fff',
         borderTopWidth: 2,
-        borderTopColor: '#dc3545',
+        borderTopColor: '#ff69b4',
     },
     bottomNav: {
         flexDirection: 'row',
