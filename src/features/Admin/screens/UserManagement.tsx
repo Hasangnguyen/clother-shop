@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import AppHeader from '../../../components/AppHeader';
 import AppFooter from '../../../components/AppFooter';
 import { fetchAllUsers, updateUser, deleteUser } from '../../../database/database';
+import { useAuth } from '../../../context/AuthContext';
 
 type AdminStackParamList = {
     AdminDashboard: undefined;
@@ -35,6 +36,7 @@ interface User {
 
 export default function UserManagement() {
     const navigation = useNavigation<UserManagementNavigationProp>();
+    const { userId } = useAuth(); // Get current logged-in user ID
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
     const [editingUser, setEditingUser] = useState<User | null>(null);
@@ -60,7 +62,13 @@ export default function UserManagement() {
         }
     };
 
-    const handleDeleteUser = (userId: number, username: string) => {
+    const handleDeleteUser = (userIdToDelete: number, username: string) => {
+        // Prevent deleting own account
+        if (userIdToDelete === userId) {
+            Alert.alert('Không thể xóa', 'Bạn không thể xóa tài khoản của chính mình');
+            return;
+        }
+
         Alert.alert(
             'Xác nhận xóa',
             `Bạn có chắc muốn xóa tài khoản "${username}"?`,
@@ -71,8 +79,8 @@ export default function UserManagement() {
                     style: 'destructive',
                     onPress: async () => {
                         try {
-                            await deleteUser(userId);
-                            setUsers(users.filter(user => user.id !== userId));
+                            await deleteUser(userIdToDelete);
+                            setUsers(users.filter(user => user.id !== userIdToDelete));
                             Alert.alert('Thành công', 'Đã xóa tài khoản');
                             loadUsers(); // Reload to ensure data synchronization
                         } catch (error) {
@@ -125,32 +133,46 @@ export default function UserManagement() {
         setEditIsAdmin(false);
     };
 
-    const renderUser = ({ item }: { item: User }) => (
-        <View style={styles.userItem}>
-            <View style={styles.userInfo}>
-                <Text style={styles.username}>{item.username}</Text>
-                <Text style={[styles.userRole, item.isAdmin && styles.adminRole]}>
-                    {item.isAdmin ? '🔑 Quản trị viên' : '👤 Người dùng'}
-                </Text>
-                <Text style={styles.createdAt}>Tạo: {new Date(item.createdAt).toLocaleDateString('vi-VN')}</Text>
-                <Text style={styles.phone}>SĐT: {item.phone || 'Chưa có'}</Text>
+    const renderUser = ({ item }: { item: User }) => {
+        const isCurrentUser = item.id === userId;
+        return (
+            <View style={styles.userItem}>
+                <View style={styles.userInfo}>
+                    <Text style={styles.username}>
+                        {item.username} {isCurrentUser && '(Bạn)'}
+                    </Text>
+                    <Text style={[styles.userRole, item.isAdmin && styles.adminRole]}>
+                        {item.isAdmin ? '🔑 Quản trị viên' : '👤 Người dùng'}
+                    </Text>
+                    <Text style={styles.createdAt}>Tạo: {new Date(item.createdAt).toLocaleDateString('vi-VN')}</Text>
+                    <Text style={styles.phone}>SĐT: {item.phone || 'Chưa có'}</Text>
+                </View>
+                <View style={styles.actions}>
+                    <TouchableOpacity
+                        style={styles.editButton}
+                        onPress={() => handleEditUser(item)}
+                    >
+                        <Text style={styles.editText}>Sửa</Text>
+                    </TouchableOpacity>
+                    {!isCurrentUser ? (
+                        <TouchableOpacity
+                            style={styles.deleteButton}
+                            onPress={() => handleDeleteUser(item.id, item.username)}
+                        >
+                            <Text style={styles.deleteText}>Xóa</Text>
+                        </TouchableOpacity>
+                    ) : (
+                        <TouchableOpacity
+                            style={[styles.deleteButton, styles.deleteButtonDisabled]}
+                            disabled={true}
+                        >
+                            <Text style={[styles.deleteText, styles.deleteTextDisabled]}>Xóa</Text>
+                        </TouchableOpacity>
+                    )}
+                </View>
             </View>
-            <View style={styles.actions}>
-                <TouchableOpacity
-                    style={styles.editButton}
-                    onPress={() => handleEditUser(item)}
-                >
-                    <Text style={styles.editText}>Sửa</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.deleteButton}
-                    onPress={() => handleDeleteUser(item.id, item.username)}
-                >
-                    <Text style={styles.deleteText}>Xóa</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    );
+        );
+    };
 
     return (
         <View style={styles.container}>
@@ -300,6 +322,13 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         fontWeight: 'bold'
+    },
+    deleteButtonDisabled: {
+        backgroundColor: '#ccc',
+        opacity: 0.5,
+    },
+    deleteTextDisabled: {
+        color: '#999',
     },
     addButton: {
         backgroundColor: '#28a745',
