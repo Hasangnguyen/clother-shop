@@ -63,64 +63,64 @@ const getDatabase = () => {
 };
 
 const initialCategories: Category[] = [
-    { id: 1, name: 'Quần', iconUri: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400' },
-    { id: 2, name: 'Áo', iconUri: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400' },
-    { id: 3, name: 'Túi', iconUri: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400' },
-    { id: 4, name: 'Giày', iconUri: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400' },
-    { id: 5, name: 'Váy', iconUri: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400' },
-    { id: 6, name: 'Phụ kiện', iconUri: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400' },
-    { id: 7, name: 'Áo khoác', iconUri: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400' },
+    { id: 1, name: 'Quần', iconUri: 'https://i.pinimg.com/1200x/fb/5d/ff/fb5dff754e24426ab01d6c67b867d8d8.jpg' },
+    { id: 2, name: 'Áo', iconUri: 'https://i.pinimg.com/736x/a9/39/8c/a9398c8e769db16033ed6ecb6c14beb6.jpg' },
+    { id: 3, name: 'Túi', iconUri: 'https://i.pinimg.com/1200x/c1/30/fe/c130fe8fb2bf5383b2c954c182f51394.jpg' },
+    { id: 4, name: 'Giày', iconUri: 'https://i.pinimg.com/1200x/d1/ba/72/d1ba72a0ce51af0ede6c2f1986e27259.jpg' },
+    { id: 5, name: 'Váy', iconUri: 'https://i.pinimg.com/1200x/1b/43/0c/1b430c71d788678e2a844a9da02997b3.jpg' },
+    { id: 6, name: 'Phụ kiện', iconUri: 'https://i.pinimg.com/1200x/09/60/e6/0960e6709dd0bf6647309dfa7cb7a801.jpg' },
+    { id: 7, name: 'Áo khoác', iconUri: 'https://i.pinimg.com/1200x/70/91/87/709187b8dbaac4b82875d4a8cf466bf1.jpg' },
 ];
 
 const initialProducts: Product[] = [
     // Quần (Category 1)
-    { id: 1, name: 'Quần Jeans Nữ Ống Rộng', price: 550000, img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400', categoryId: 1 },
-    { id: 2, name: 'Quần Kaki Nữ Công Sở', price: 450000, img: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400', categoryId: 1 },
-    { id: 3, name: 'Quần Legging Nữ', price: 380000, img: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400', categoryId: 1 },
-    { id: 4, name: 'Quần Short Nữ Thể Thao', price: 320000, img: 'https://images.unsplash.com/photo-1506629905607-0a5e2c0c8b8d?w=400&auto=format&fit=crop', categoryId: 1 },
-    { id: 5, name: 'Quần Ống Loe Nữ', price: 480000, img: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400', categoryId: 1 },
+    { id: 1, name: 'Quần Jeans Nữ Ống Rộng', price: 550000, img: 'https://i.pinimg.com/1200x/98/63/17/9863175f61ca18c5d3774f187765c464.jpg', categoryId: 1 },
+    { id: 2, name: 'Quần Kaki Nữ Công Sở', price: 450000, img: 'https://i.pinimg.com/1200x/62/57/10/6257108906dfbd8d14267ba0a9e23a20.jpg', categoryId: 1 },
+    { id: 3, name: 'Quần Legging Nữ', price: 380000, img: 'https://i.pinimg.com/736x/53/eb/b2/53ebb27097a7c26e82bc902d708aae5d.jpg', categoryId: 1 },
+    { id: 4, name: 'Quần Short Nữ Thể Thao', price: 320000, img: 'https://i.pinimg.com/736x/59/93/70/5993703042e6cf5703be40f3b7a18442.jpg', categoryId: 1 },
+    { id: 5, name: 'Quần Ống Loe Nữ', price: 480000, img: 'https://i.pinimg.com/736x/a0/4d/55/a04d55b24505e9995bc013085f6a4c70.jpg', categoryId: 1 },
     
     // Áo (Category 2) - Feminine styles
-    { id: 6, name: 'Áo Thun Nữ Cổ Tròn', price: 350000, img: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400', categoryId: 2 },
-    { id: 7, name: 'Áo Sơ Mi Nữ Công Sở', price: 400000, img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&auto=format&fit=crop', categoryId: 2 },
-    { id: 8, name: 'Áo Kiểu Nữ Tay Ngắn', price: 420000, img: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&auto=format&fit=crop', categoryId: 2 },
-    { id: 9, name: 'Áo Ba Lỗ Nữ', price: 280000, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&auto=format&fit=crop', categoryId: 2 },
-    { id: 10, name: 'Áo Len Nữ Cổ Lọ', price: 520000, img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&auto=format&fit=crop', categoryId: 2 },
+    { id: 6, name: 'Áo Thun Nữ Cổ Tròn', price: 350000, img: 'https://i.pinimg.com/736x/d6/6e/35/d66e354f578423c1e1046f7ebbb3234c.jpg', categoryId: 2 },
+    { id: 7, name: 'Áo Sơ Mi Nữ Công Sở', price: 400000, img: 'https://i.pinimg.com/1200x/8c/86/aa/8c86aac01dbca4b8886cae3d73544e72.jpg', categoryId: 2 },
+    { id: 8, name: 'Áo Kiểu Nữ Tay Ngắn', price: 420000, img: 'https://i.pinimg.com/736x/26/29/8f/26298f9cb340a08a25f48ec3f39a192e.jpg', categoryId: 2 },
+    { id: 9, name: 'Áo Ba Lỗ Nữ', price: 280000, img: 'https://i.pinimg.com/1200x/1b/4e/cd/1b4ecdb301c20cd0efc0c1564d59ea39.jpg', categoryId: 2 },
+    { id: 10, name: 'Áo Len Nữ Cổ Lọ', price: 520000, img: 'https://i.pinimg.com/1200x/31/ce/ee/31ceee5f41f5d54b90401fc4a03b486c.jpg', categoryId: 2 },
     
     // Túi (Category 3)
-    { id: 11, name: 'Túi Xách Da Nữ', price: 1200000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400', categoryId: 3 },
-    { id: 12, name: 'Túi Đeo Chéo Nữ', price: 800000, img: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400', categoryId: 3 },
-    { id: 13, name: 'Túi Tote Nữ', price: 650000, img: 'https://images.unsplash.com/photo-1564422170191-4bd349a2f69d?w=400&auto=format&fit=crop', categoryId: 3 },
-    { id: 14, name: 'Túi Mini Nữ', price: 450000, img: 'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=400&auto=format&fit=crop', categoryId: 3 },
-    { id: 15, name: 'Túi Backpack Nữ', price: 750000, img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 3 },
+    { id: 11, name: 'Túi Xách Da Nữ', price: 1200000, img: 'https://i.pinimg.com/1200x/1e/16/ca/1e16caf94272c10927371ab8d5256dbc.jpg', categoryId: 3 },
+    { id: 12, name: 'Túi Đeo Chéo Nữ', price: 800000, img: 'https://i.pinimg.com/1200x/35/1c/a4/351ca40b7e07e1c401b713de1502ebb6.jpg', categoryId: 3 },
+    { id: 13, name: 'Túi Tote Nữ', price: 650000, img: 'https://img.fantaskycdn.com/fd9fcbc5f87b2baaa1f465010916b7e4_750x.jpeg', categoryId: 3 },
+    { id: 14, name: 'Túi Mini Nữ', price: 450000, img: 'https://i.pinimg.com/1200x/d5/21/38/d52138fd647f86f7d6baa9b6c8b90309.jpg', categoryId: 3 },
+    { id: 15, name: 'Túi Backpack Nữ', price: 750000, img: 'https://i.pinimg.com/736x/77/aa/7f/77aa7f72528d52330df9395cc7ab1e50.jpg', categoryId: 3 },
     
     // Giày (Category 4) - Mostly high heels
-    { id: 16, name: 'Giày Cao Gót Đen', price: 900000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400', categoryId: 4 },
-    { id: 17, name: 'Giày Cao Gót Đỏ', price: 950000, img: 'https://images.unsplash.com/photo-1605812860427-4014439f7033?w=400&auto=format&fit=crop', categoryId: 4 },
-    { id: 18, name: 'Giày Cao Gót Nude', price: 880000, img: 'https://images.unsplash.com/photo-1608256246200-53e6092b7132?w=400&auto=format&fit=crop', categoryId: 4 },
-    { id: 19, name: 'Giày Cao Gót Stiletto', price: 1200000, img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&auto=format&fit=crop', categoryId: 4 },
-    { id: 20, name: 'Giày Cao Gót Mũi Nhọn', price: 1100000, img: 'https://images.unsplash.com/photo-1605812860427-4014439f7033?w=400&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8', categoryId: 4 },
+    { id: 16, name: 'Giày Cao Gót Đen', price: 900000, img: 'https://i.pinimg.com/736x/55/4a/69/554a697b8c2410871d6a4cf0ef0439de.jpg', categoryId: 4 },
+    { id: 17, name: 'Giày Cao Gót Đỏ', price: 950000, img: 'https://i.pinimg.com/1200x/3a/8b/b0/3a8bb0c70a9be5cb548d8e31d13520b8.jpg', categoryId: 4 },
+    { id: 18, name: 'Giày Cao Gót Nude', price: 880000, img: 'https://i.pinimg.com/1200x/96/53/ac/9653ac63614d2dd4cba39e9fa9b2d52a.jpg', categoryId: 4 },
+    { id: 19, name: 'Giày Cao Gót Stiletto', price: 1200000, img: 'https://i.pinimg.com/1200x/5c/a0/d2/5ca0d27e9f4f5c2d5ac1c26a586da524.jpg', categoryId: 4 },
+    { id: 20, name: 'Giày Cao Gót Mũi Nhọn', price: 1100000, img: 'https://i.pinimg.com/1200x/9b/ac/2c/9bac2ce102af40023ba93236f17b414f.jpg', categoryId: 4 },
     
     // Váy (Category 5)
-    { id: 21, name: 'Váy Liền Thân', price: 650000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400', categoryId: 5 },
-    { id: 22, name: 'Váy Xòe Nữ', price: 720000, img: 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 5 },
-    { id: 23, name: 'Váy Ôm Body Nữ', price: 580000, img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&ixlib=rb-4.0.3', categoryId: 5 },
-    { id: 24, name: 'Váy Dài Nữ', price: 850000, img: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 5 },
-    { id: 25, name: 'Váy Ngắn Nữ', price: 480000, img: 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 5 },
+    { id: 21, name: 'Váy Liền Thân', price: 650000, img: 'https://i.pinimg.com/736x/c0/42/57/c042579761130fe34c3b3ac70f7ac9b7.jpg', categoryId: 5 },
+    { id: 22, name: 'Váy Xòe Nữ', price: 720000, img: 'https://i.pinimg.com/1200x/c9/98/62/c998626a103f5cf18dc78d5939a65ebf.jpg', categoryId: 5 },
+    { id: 23, name: 'Váy Ôm Body Nữ', price: 580000, img: 'https://i.pinimg.com/1200x/a1/1b/a6/a11ba6eddb18de331953d3b32b7008d9.jpg', categoryId: 5 },
+    { id: 24, name: 'Váy Dài Nữ', price: 850000, img: 'https://i.pinimg.com/1200x/53/28/77/532877d0cd3173d24d7c82f3d346e7f0.jpg', categoryId: 5 },
+    { id: 25, name: 'Váy Ngắn Nữ', price: 480000, img: 'https://i.pinimg.com/1200x/2a/18/8e/2a188eef0cfba5444b5767cf6c796adc.jpg', categoryId: 5 },
     
     // Phụ kiện (Category 6)
-    { id: 26, name: 'Vòng Tay Nữ', price: 250000, img: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400', categoryId: 6 },
-    { id: 27, name: 'Dây Chuyền Nữ', price: 380000, img: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400', categoryId: 6 },
-    { id: 28, name: 'Bông Tai Nữ', price: 320000, img: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400', categoryId: 6 },
-    { id: 29, name: 'Kính Mát Nữ', price: 450000, img: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400', categoryId: 6 },
-    { id: 30, name: 'Thắt Lưng Nữ', price: 280000, img: 'https://images.unsplash.com/photo-1624378515193-8c963b1e2a53?w=400', categoryId: 6 },
+    { id: 26, name: 'Vòng Tay Nữ', price: 250000, img: 'https://i.pinimg.com/736x/01/63/4d/01634dceea9ab624e93fcb24b430ba14.jpg', categoryId: 6 },
+    { id: 27, name: 'Dây Chuyền Nữ', price: 380000, img: 'https://i.pinimg.com/1200x/40/62/33/406233cc0c8223d6944365be8ddeedf9.jpg', categoryId: 6 },
+    { id: 28, name: 'Bông Tai Nữ', price: 320000, img: 'https://i.pinimg.com/1200x/0a/18/20/0a18205ead9485f387fae0627273bccb.jpg', categoryId: 6 },
+    { id: 29, name: 'Kính Mát Nữ', price: 450000, img: 'https://i.pinimg.com/736x/fd/dc/9f/fddc9fadf9dba93c5a66b4960d655195.jpg', categoryId: 6 },
+    { id: 30, name: 'Thắt Lưng Nữ', price: 280000, img: 'https://i.pinimg.com/1200x/66/30/a2/6630a249179e74c5f8bb3bd4b5c2cd25.jpg', categoryId: 6 },
     
     // Áo khoác (Category 7)
-    { id: 31, name: 'Áo Khoác Kaki Nữ', price: 680000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', categoryId: 7 },
-    { id: 32, name: 'Áo Khoác Dù Nữ', price: 550000, img: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400', categoryId: 7 },
-    { id: 33, name: 'Áo Khoác Len Nữ', price: 750000, img: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400', categoryId: 7 },
-    { id: 34, name: 'Áo Khoác Bomber Nữ', price: 620000, img: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop', categoryId: 7 },
-    { id: 35, name: 'Áo Khoác Blazer Nữ', price: 850000, img: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400', categoryId: 7 },
+    { id: 31, name: 'Áo Khoác Kaki Nữ', price: 680000, img: 'https://i.pinimg.com/1200x/9a/fd/b3/9afdb3ad8013ab1f3dffd7486ea5b652.jpg', categoryId: 7 },
+    { id: 32, name: 'Áo Khoác Dù Nữ', price: 550000, img: 'https://i.pinimg.com/736x/b0/76/d9/b076d9c42fdef09ff5dca008bc3ef54a.jpg', categoryId: 7 },
+    { id: 33, name: 'Áo Khoác Len Nữ', price: 750000, img: 'https://i.pinimg.com/736x/1d/6b/76/1d6b7648beb22b2f8975d2189f99084a.jpg', categoryId: 7 },
+    { id: 34, name: 'Áo Khoác Bomber Nữ', price: 620000, img: 'https://i.pinimg.com/736x/92/50/86/925086c36721ddfa6c623567d39b8501.jpg', categoryId: 7 },
+    { id: 35, name: 'Áo Khoác Blazer Nữ', price: 850000, img: 'https://i.pinimg.com/736x/f4/c9/2a/f4c92a5e07bf026420223b55c8961a68.jpg', categoryId: 7 },
 ];
 
 
