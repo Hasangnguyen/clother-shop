@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { MaterialIcons } from '@expo/vector-icons';
 
 // Import components and database
 import AppHeader from '../../../components/AppHeader';
@@ -118,14 +119,20 @@ export default function HomeScreen() {
                         <View style={styles.bannerContainer}>
                             <Image source={require('../../../assets/images/products/shop-thoi-trang-nu.jpg')} style={styles.bannerImage} />
                             <View style={styles.bannerOverlay}>
-                                <Text style={styles.bannerText}>👗 Lady Shop</Text>
+                                <View style={styles.bannerTitleContainer}>
+                                    <MaterialIcons name="shopping-bag" size={28} color="#fff" />
+                                    <Text style={styles.bannerText}>Lady Shop</Text>
+                                </View>
                                 <Text style={styles.bannerSubtext}>Thời trang cho phái đẹp</Text>
                             </View>
                         </View>
 
                         {/* "Product Categories" Section */}
                         <View style={styles.sectionHeader}>
-                            <Text style={styles.quickViewHeading}>✨ Danh Mục Sản Phẩm</Text>
+                            <View style={styles.quickViewHeadingContainer}>
+                                <MaterialIcons name="category" size={20} color="#333" />
+                                <Text style={styles.quickViewHeading}>Danh Mục Sản Phẩm</Text>
+                            </View>
                         </View>
                         <View style={styles.quickViewGrid}>
                             <FlatList
@@ -185,11 +192,16 @@ const styles = StyleSheet.create({
         padding: 15,
         paddingTop: 20,
     },
+    bannerTitleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        marginBottom: 5,
+    },
     bannerText: {
         fontSize: 24,
         fontWeight: 'bold',
         color: '#fff',
-        marginBottom: 5,
     },
     bannerSubtext: {
         fontSize: 14,
@@ -205,6 +217,11 @@ const styles = StyleSheet.create({
     },
     
     // --- Quick View / Categories (Product Categories) ---
+    quickViewHeadingContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+    },
     quickViewHeading: {
         fontSize: 20,
         fontWeight: 'bold',

@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { MaterialIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 
@@ -238,7 +239,10 @@ export default function ProductManagement() {
             <AppHeader />
 
             <View style={styles.body}>
-                <Text style={styles.headerTitle}>📦 Quản Lý Sản Phẩm</Text>
+                <View style={styles.headerTitleContainer}>
+                    <MaterialIcons name="inventory" size={24} color="#333" />
+                    <Text style={styles.headerTitle}>Quản Lý Sản Phẩm</Text>
+                </View>
                 <Text style={styles.subtitle}>Tổng số: {products.length} sản phẩm</Text>
 
                 <TouchableOpacity
@@ -276,7 +280,10 @@ export default function ProductManagement() {
                             onChangeText={setProductPrice}
                         />
                         <View style={{ zIndex: 1000, marginBottom: 10 }}>
-                            <Text style={styles.labelText}>📂 Danh mục:</Text>
+                            <View style={styles.labelContainer}>
+                                <MaterialIcons name="folder" size={16} color="#333" />
+                                <Text style={styles.labelText}>Danh mục:</Text>
+                            </View>
                             <DropDownPicker
                                 open={openCategoryDropdown}
                                 value={productCategoryId}
@@ -313,7 +320,8 @@ export default function ProductManagement() {
                                 </View>
                             ) : (
                                 <TouchableOpacity style={styles.pickImageBtn} onPress={handlePickImage}>
-                                    <Text style={styles.pickImageText}>📷 Chọn ảnh</Text>
+                                    <MaterialIcons name="add-photo-alternate" size={20} color="#333" />
+                                    <Text style={styles.pickImageText}>Chọn ảnh</Text>
                                 </TouchableOpacity>
                             )}
                         </View>
@@ -343,7 +351,7 @@ export default function ProductManagement() {
 
                         ListEmptyComponent={
                             <View style={styles.emptyView}>
-                                <Text style={{ fontSize: 40 }}>📭</Text>
+                                <MaterialIcons name="inbox" size={48} color="#ccc" />
                                 <Text style={styles.emptyText}>Chưa có sản phẩm nào</Text>
                             </View>
                         }
@@ -360,9 +368,22 @@ const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#f8f9fa' },
     body: { flex: 1 },
 
+    headerTitleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+        marginBottom: 10,
+        paddingTop: 16,
+    },
     headerTitle: {
         fontSize: 24, fontWeight: 'bold', color: '#333',
-        textAlign: 'center', marginBottom: 10, paddingTop: 16
+    },
+    labelContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 4,
+        marginBottom: 4,
     },
     subtitle: {
         fontSize: 16, color: '#666',
@@ -459,8 +480,10 @@ const styles = StyleSheet.create({
         height: 40,
         backgroundColor: '#e9ecef',
         borderRadius: 8,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        gap: 4,
         borderWidth: 1,
         borderColor: '#ddd',
     },

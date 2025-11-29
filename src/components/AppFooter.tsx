@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useAuth } from '../context/AuthContext';
 import AdminFooter from './AdminFooter';
 
@@ -17,21 +18,21 @@ type RootStackParamList = {
 };
 
 
-const navItemsData: { label: string; icon: string; screen: keyof RootStackParamList }[] = [
-    { label: "Trang chủ", icon: "🏡", screen: "Home" },
-    { label: "Khám Phá", icon: "✨", screen: "Explore" },
-    { label: "Giỏ hàng", icon: "👜", screen: "Cart" },
-    { label: "Cá nhân", icon: "👗", screen: "User" },
+const navItemsData: { label: string; iconName: keyof typeof MaterialIcons.glyphMap; screen: keyof RootStackParamList }[] = [
+    { label: "Trang chủ", iconName: "home", screen: "Home" },
+    { label: "Khám Phá", iconName: "explore", screen: "Explore" },
+    { label: "Giỏ hàng", iconName: "shopping-cart", screen: "Cart" },
+    { label: "Cá nhân", iconName: "person", screen: "User" },
 ];
 
 interface BottomNavItemProps {
     label: string;
-    icon: string;
+    iconName: keyof typeof MaterialIcons.glyphMap;
     isActive: boolean;
     screen: keyof RootStackParamList;
 }
 
-function BottomNavItem({ label, icon, isActive, screen }: BottomNavItemProps) {
+function BottomNavItem({ label, iconName, isActive, screen }: BottomNavItemProps) {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     const handlePress = () => {
@@ -51,7 +52,11 @@ function BottomNavItem({ label, icon, isActive, screen }: BottomNavItemProps) {
     return (
         <TouchableOpacity style={styles.navItem} onPress={handlePress}>
             <View style={styles.iconContainer}>
-                <Text style={[styles.navIcon, isActive && { color: '#ff69b4' }]}>{icon}</Text>
+                <MaterialIcons 
+                    name={iconName} 
+                    size={24} 
+                    color={isActive ? '#ff69b4' : '#666'} 
+                />
             </View>
             <Text style={[styles.navText, isActive && { color: '#ff69b4' }]}>{label}</Text>
         </TouchableOpacity>
@@ -75,7 +80,7 @@ export default function AppFooter({ activeScreen }: { activeScreen: keyof RootSt
                     <BottomNavItem
                         key={item.label}
                         label={item.label}
-                        icon={item.icon}
+                        iconName={item.iconName}
                         isActive={item.screen === activeScreen}
                         screen={item.screen}
                     />
@@ -103,10 +108,6 @@ const styles = StyleSheet.create({
     },
     iconContainer: {
         marginBottom: 3,
-    },
-    navIcon: {
-        fontSize: 18,
-        fontWeight: 'normal',
     },
     navText: {
         fontWeight: 'normal',

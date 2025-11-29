@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useAuth } from '../context/AuthContext';
 
 type RootStackParamList = {
@@ -31,7 +32,10 @@ export default function AppHeader() {
         <View>
             {/* ... Phần Top Bar (Logo, Cart, User) Giữ Nguyên ... */}
             <View style={[styles.topBar, { paddingTop: Math.max(insets.top, 30) }]}>
-                <Text style={styles.title}>👗 Lady Shop</Text>
+                <View style={styles.titleContainer}>
+                    <MaterialIcons name="shopping-bag" size={24} color="#000" />
+                    <Text style={styles.title}>Lady Shop</Text>
+                </View>
                 <View style={styles.topBarRight}>
                     {user ? (
                         <View style={styles.userSectionRow}>
@@ -62,7 +66,10 @@ export default function AppHeader() {
                     style={{ padding: 10, backgroundColor: '#ff69b4', borderRadius: 0 }}
                     onPress={() => navigation.navigate('Admin')}
                 >
-                    <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#fff' }}>🔑 Trang Admin (Quản lý)</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                        <MaterialIcons name="admin-panel-settings" size={18} color="#fff" />
+                        <Text style={{ textAlign: 'center', fontWeight: 'bold', color: '#fff' }}>Trang Admin (Quản lý)</Text>
+                    </View>
                 </TouchableOpacity>
             )}
         </View>
@@ -70,6 +77,11 @@ export default function AppHeader() {
 }
 
 const styles = StyleSheet.create({
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+    },
     title: {
         color: '#000',
         fontSize: 20,

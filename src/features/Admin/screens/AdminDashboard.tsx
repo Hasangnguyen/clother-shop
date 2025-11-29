@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import { MaterialIcons } from '@expo/vector-icons';
 import AppHeader from '../../../components/AppHeader';
 import AppFooter from '../../../components/AppFooter';
 import { fetchProducts, fetchCategories, fetchAllOrders } from '../../../database/database';
@@ -55,37 +56,43 @@ export default function AdminDashboard() {
         <View style={styles.container}>
             <AppHeader />
             <ScrollView style={styles.content}>
-                <Text style={styles.title}>📊 Bảng Điều Khiển</Text>
+                <View style={styles.titleContainer}>
+                    <MaterialIcons name="dashboard" size={28} color="#333" />
+                    <Text style={styles.title}>Bảng Điều Khiển</Text>
+                </View>
 
                 {/* Statistics Cards */}
                 <View style={styles.statsContainer}>
                     <View style={[styles.statCard, { borderLeftColor: '#ff69b4' }]}>
-                        <Text style={styles.statIcon}>🍷</Text>
+                        <MaterialIcons name="inventory" size={32} color="#ff69b4" />
                         <Text style={styles.statValue}>{loading ? '-' : stats.products}</Text>
                         <Text style={styles.statLabel}>Sản phẩm</Text>
                     </View>
 
                     <View style={[styles.statCard, { borderLeftColor: '#28A745' }]}>
-                        <Text style={styles.statIcon}>📁</Text>
+                        <MaterialIcons name="folder" size={32} color="#28A745" />
                         <Text style={styles.statValue}>{loading ? '-' : stats.categories}</Text>
                         <Text style={styles.statLabel}>Danh mục</Text>
                     </View>
 
                     <View style={[styles.statCard, { borderLeftColor: '#FFC107' }]}>
-                        <Text style={styles.statIcon}>📦</Text>
+                        <MaterialIcons name="receipt" size={32} color="#FFC107" />
                         <Text style={styles.statValue}>{loading ? '-' : stats.orders}</Text>
                         <Text style={styles.statLabel}>Đơn hàng</Text>
                     </View>
                 </View>
 
                 {/* Management Sections */}
-                <Text style={styles.sectionTitle}>⚙️ Quản Lý</Text>
+                <View style={styles.sectionTitleContainer}>
+                    <MaterialIcons name="settings" size={20} color="#333" />
+                    <Text style={styles.sectionTitle}>Quản Lý</Text>
+                </View>
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         style={styles.dashboardButton}
                         onPress={() => navigation.navigate('CategoryManagement')}
                     >
-                        <Text style={styles.buttonIcon}>📂</Text>
+                        <MaterialIcons name="folder" size={32} color="#ff69b4" />
                         <Text style={styles.buttonTitle}>Quản Lý Danh Mục</Text>
                         <Text style={styles.buttonDescription}>Xem và quản lý danh mục sản phẩm</Text>
                     </TouchableOpacity>
@@ -94,7 +101,7 @@ export default function AdminDashboard() {
                         style={styles.dashboardButton}
                         onPress={() => navigation.navigate('ProductManagement')}
                     >
-                        <Text style={styles.buttonIcon}>📦</Text>
+                        <MaterialIcons name="inventory" size={32} color="#ff69b4" />
                         <Text style={styles.buttonTitle}>Quản Lý Sản Phẩm</Text>
                         <Text style={styles.buttonDescription}>Xem, sửa, xóa sản phẩm</Text>
                     </TouchableOpacity>
@@ -103,7 +110,7 @@ export default function AdminDashboard() {
                         style={styles.dashboardButton}
                         onPress={() => navigation.navigate('UserManagement')}
                     >
-                        <Text style={styles.buttonIcon}>👥</Text>
+                        <MaterialIcons name="people" size={32} color="#ff69b4" />
                         <Text style={styles.buttonTitle}>Quản Lý Người Dùng</Text>
                         <Text style={styles.buttonDescription}>Xem và quản lý tài khoản người dùng</Text>
                     </TouchableOpacity>
@@ -112,7 +119,7 @@ export default function AdminDashboard() {
                         style={styles.dashboardButton}
                         onPress={() => navigation.navigate('OrderManagement')}
                     >
-                        <Text style={styles.buttonIcon}>🛒</Text>
+                        <MaterialIcons name="shopping-cart" size={32} color="#ff69b4" />
                         <Text style={styles.buttonTitle}>Quản Lý Đơn Hàng</Text>
                         <Text style={styles.buttonDescription}>Xem và xử lý các đơn hàng</Text>
                     </TouchableOpacity>
@@ -158,10 +165,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
         elevation: 2,
         borderLeftWidth: 4,
-    },
-    statIcon: {
-        fontSize: 28,
-        marginBottom: 8,
+        gap: 8,
     },
     statValue: {
         fontSize: 22,
@@ -174,10 +178,15 @@ const styles = StyleSheet.create({
         color: '#666',
         fontWeight: '500',
     },
+    sectionTitleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        marginBottom: 12,
+    },
     sectionTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        marginBottom: 12,
         color: '#333',
     },
     buttonContainer: {
@@ -196,10 +205,7 @@ const styles = StyleSheet.create({
         elevation: 3,
         borderLeftWidth: 4,
         borderLeftColor: '#dc3545',
-    },
-    buttonIcon: {
-        fontSize: 32,
-        marginBottom: 12,
+        gap: 8,
     },
     buttonTitle: {
         fontSize: 16,

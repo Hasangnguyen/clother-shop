@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { MaterialIcons } from '@expo/vector-icons';
 
 type RootStackParamList = {
     [key: string]: any;
@@ -10,20 +11,20 @@ type RootStackParamList = {
 
 interface AdminNavItemProps {
     label: string;
-    icon: string;
+    iconName: keyof typeof MaterialIcons.glyphMap;
     isActive: boolean;
     screen: string;
 }
 
-const adminNavItemsData: { label: string; icon: string; screen: string }[] = [
-    { label: "Dashboard", icon: "📊", screen: "Admin" },
-    { label: "Sản phẩm", icon: "👕", screen: "ProductManagement" },
-    { label: "Danh mục", icon: "📂", screen: "CategoryManagement" },
-    { label: "Đơn hàng", icon: "📮", screen: "OrderManagement" },
-    { label: "Người dùng", icon: "👥", screen: "UserManagement" },
+const adminNavItemsData: { label: string; iconName: keyof typeof MaterialIcons.glyphMap; screen: string }[] = [
+    { label: "Dashboard", iconName: "dashboard", screen: "Admin" },
+    { label: "Sản phẩm", iconName: "inventory", screen: "ProductManagement" },
+    { label: "Danh mục", iconName: "folder", screen: "CategoryManagement" },
+    { label: "Đơn hàng", iconName: "receipt", screen: "OrderManagement" },
+    { label: "Người dùng", iconName: "people", screen: "UserManagement" },
 ];
 
-function AdminNavItem({ label, icon, isActive, screen }: AdminNavItemProps) {
+function AdminNavItem({ label, iconName, isActive, screen }: AdminNavItemProps) {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     const handlePress = () => {
@@ -42,7 +43,11 @@ function AdminNavItem({ label, icon, isActive, screen }: AdminNavItemProps) {
     return (
         <TouchableOpacity style={styles.navItem} onPress={handlePress}>
             <View style={styles.iconContainer}>
-                <Text style={[styles.navIcon, isActive && { color: '#dc3545' }]}>{icon}</Text>
+                <MaterialIcons 
+                    name={iconName} 
+                    size={22} 
+                    color={isActive ? '#dc3545' : '#666'} 
+                />
             </View>
             <Text style={[styles.navText, isActive && styles.activeText, isActive && { color: '#dc3545' }]}>
                 {label}
@@ -61,7 +66,7 @@ export default function AdminFooter({ activeScreen }: { activeScreen: string }) 
                     <AdminNavItem
                         key={item.label}
                         label={item.label}
-                        icon={item.icon}
+                        iconName={item.iconName}
                         isActive={item.screen === activeScreen}
                         screen={item.screen}
                     />
@@ -89,10 +94,6 @@ const styles = StyleSheet.create({
     },
     iconContainer: {
         marginBottom: 4,
-    },
-    navIcon: {
-        fontSize: 20,
-        fontWeight: 'normal',
     },
     navText: {
         fontWeight: '500',
