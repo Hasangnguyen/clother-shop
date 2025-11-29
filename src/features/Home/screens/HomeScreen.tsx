@@ -130,7 +130,7 @@ export default function HomeScreen() {
                         {/* "Product Categories" Section */}
                         <View style={styles.sectionHeader}>
                             <View style={styles.quickViewHeadingContainer}>
-                                <MaterialIcons name="category" size={20} color="#333" />
+                                <MaterialIcons name="category" size={20} color="#ff69b4" />
                                 <Text style={styles.quickViewHeading}>Danh Mục Sản Phẩm</Text>
                             </View>
                         </View>
@@ -272,7 +272,7 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#333',
+        color: '#ff69b4',
     },
     row: {
         justifyContent: 'space-between',

@@ -240,7 +240,7 @@ export default function ProductManagement() {
 
             <View style={styles.body}>
                 <View style={styles.headerTitleContainer}>
-                    <MaterialIcons name="inventory" size={24} color="#333" />
+                    <MaterialIcons name="inventory" size={24} color="#ff69b4" />
                     <Text style={styles.headerTitle}>Quản Lý Sản Phẩm</Text>
                 </View>
                 <Text style={styles.subtitle}>Tổng số: {products.length} sản phẩm</Text>
@@ -281,7 +281,7 @@ export default function ProductManagement() {
                         />
                         <View style={{ zIndex: 1000, marginBottom: 10 }}>
                             <View style={styles.labelContainer}>
-                                <MaterialIcons name="folder" size={16} color="#333" />
+                                <MaterialIcons name="folder" size={16} color="#ff69b4" />
                                 <Text style={styles.labelText}>Danh mục:</Text>
                             </View>
                             <DropDownPicker
@@ -320,7 +320,7 @@ export default function ProductManagement() {
                                 </View>
                             ) : (
                                 <TouchableOpacity style={styles.pickImageBtn} onPress={handlePickImage}>
-                                    <MaterialIcons name="add-photo-alternate" size={20} color="#333" />
+                                    <MaterialIcons name="add-photo-alternate" size={20} color="#ff69b4" />
                                     <Text style={styles.pickImageText}>Chọn ảnh</Text>
                                 </TouchableOpacity>
                             )}
@@ -377,7 +377,7 @@ const styles = StyleSheet.create({
         paddingTop: 16,
     },
     headerTitle: {
-        fontSize: 24, fontWeight: 'bold', color: '#333',
+        fontSize: 24, fontWeight: 'bold', color: '#ff69b4',
     },
     labelContainer: {
         flexDirection: 'row',

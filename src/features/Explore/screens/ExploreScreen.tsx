@@ -177,6 +177,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginVertical: 15,
         paddingHorizontal: 15,
+        color: '#ff69b4',
     },
     listContainer: {
         paddingHorizontal: 10,

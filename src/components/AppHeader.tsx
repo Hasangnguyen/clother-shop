@@ -33,7 +33,7 @@ export default function AppHeader() {
             {/* ... Phần Top Bar (Logo, Cart, User) Giữ Nguyên ... */}
             <View style={[styles.topBar, { paddingTop: Math.max(insets.top, 30) }]}>
                 <View style={styles.titleContainer}>
-                    <MaterialIcons name="shopping-bag" size={24} color="#000" />
+                    <MaterialIcons name="shopping-bag" size={24} color="#ff69b4" />
                     <Text style={styles.title}>Lady Shop</Text>
                 </View>
                 <View style={styles.topBarRight}>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         gap: 8,
     },
     title: {
-        color: '#000',
+        color: '#ff69b4',
         fontSize: 20,
         fontWeight: 'bold',
     },

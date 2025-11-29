@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import AppHeader from '../../../components/AppHeader';
 import AppFooter from '../../../components/AppFooter';
 import { fetchProducts, fetchCategories, fetchAllOrders } from '../../../database/database';
@@ -57,34 +58,64 @@ export default function AdminDashboard() {
             <AppHeader />
             <ScrollView style={styles.content}>
                 <View style={styles.titleContainer}>
-                    <MaterialIcons name="dashboard" size={28} color="#333" />
+                    <MaterialIcons name="dashboard" size={28} color="#ff69b4" />
                     <Text style={styles.title}>Bảng Điều Khiển</Text>
                 </View>
 
                 {/* Statistics Cards */}
-                <View style={styles.statsContainer}>
-                    <View style={[styles.statCard, { borderLeftColor: '#ff69b4' }]}>
-                        <MaterialIcons name="inventory" size={32} color="#ff69b4" />
-                        <Text style={styles.statValue}>{loading ? '-' : stats.products}</Text>
-                        <Text style={styles.statLabel}>Sản phẩm</Text>
+                <View style={styles.statsWrapper}>
+                    {/* Sản phẩm */}
+                    <View style={styles.statItem}>
+                        <LinearGradient
+                            colors={['#ff69b4', '#ff8dc7']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 1 }}
+                            style={styles.statIconContainer}
+                        >
+                            <MaterialIcons name="inventory" size={24} color="#fff" />
+                        </LinearGradient>
+                        <View style={styles.statContent}>
+                            <Text style={styles.statValue}>{loading ? '-' : stats.products.toLocaleString()}</Text>
+                            <Text style={styles.statLabel}>Sản phẩm</Text>
+                        </View>
                     </View>
 
-                    <View style={[styles.statCard, { borderLeftColor: '#28A745' }]}>
-                        <MaterialIcons name="folder" size={32} color="#28A745" />
-                        <Text style={styles.statValue}>{loading ? '-' : stats.categories}</Text>
-                        <Text style={styles.statLabel}>Danh mục</Text>
+                    {/* Danh mục */}
+                    <View style={styles.statItem}>
+                        <LinearGradient
+                            colors={['#28A745', '#34ce57']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 1 }}
+                            style={styles.statIconContainer}
+                        >
+                            <MaterialIcons name="folder" size={24} color="#fff" />
+                        </LinearGradient>
+                        <View style={styles.statContent}>
+                            <Text style={[styles.statValue, { color: '#28A745' }]}>{loading ? '-' : stats.categories.toLocaleString()}</Text>
+                            <Text style={styles.statLabel}>Danh mục</Text>
+                        </View>
                     </View>
 
-                    <View style={[styles.statCard, { borderLeftColor: '#FFC107' }]}>
-                        <MaterialIcons name="receipt" size={32} color="#FFC107" />
-                        <Text style={styles.statValue}>{loading ? '-' : stats.orders}</Text>
-                        <Text style={styles.statLabel}>Đơn hàng</Text>
+                    {/* Đơn hàng */}
+                    <View style={styles.statItem}>
+                        <LinearGradient
+                            colors={['#FFC107', '#ffd54f']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 1 }}
+                            style={styles.statIconContainer}
+                        >
+                            <MaterialIcons name="receipt" size={24} color="#fff" />
+                        </LinearGradient>
+                        <View style={styles.statContent}>
+                            <Text style={[styles.statValue, { color: '#FF9800' }]}>{loading ? '-' : stats.orders.toLocaleString()}</Text>
+                            <Text style={styles.statLabel}>Đơn hàng</Text>
+                        </View>
                     </View>
                 </View>
 
                 {/* Management Sections */}
                 <View style={styles.sectionTitleContainer}>
-                    <MaterialIcons name="settings" size={20} color="#333" />
+                    <MaterialIcons name="settings" size={20} color="#ff69b4" />
                     <Text style={styles.sectionTitle}>Quản Lý</Text>
                 </View>
                 <View style={styles.buttonContainer}>
@@ -140,38 +171,49 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 16,
     },
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 8,
+        marginBottom: 24,
+        paddingTop: 8,
+    },
     title: {
         fontSize: 28,
         fontWeight: 'bold',
-        marginBottom: 24,
-        textAlign: 'center',
-        color: '#333',
+        color: '#ff69b4',
     },
-    statsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 24,
-        gap: 12,
-    },
-    statCard: {
-        flex: 1,
+    statsWrapper: {
         backgroundColor: '#fff',
-        borderRadius: 8,
-        padding: 16,
+        borderRadius: 16,
+        padding: 20,
+        marginBottom: 28,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    statItem: {
+        flex: 1,
+        flexDirection: 'column',
         alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-        elevation: 2,
-        borderLeftWidth: 4,
         gap: 8,
     },
+    statIconContainer: {
+        width: 48,
+        height: 48,
+        borderRadius: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    statContent: {
+        alignItems: 'center',
+    },
     statValue: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: '#333',
-        marginBottom: 4,
+        fontSize: 24,
+        fontWeight: '700',
+        color: '#ff69b4',
+        marginBottom: 2,
+        letterSpacing: -0.5,
     },
     statLabel: {
         fontSize: 12,
@@ -204,7 +246,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 3,
         borderLeftWidth: 4,
-        borderLeftColor: '#dc3545',
+        borderLeftColor: '#ff69b4',
         gap: 8,
     },
     buttonTitle: {
