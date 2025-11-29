@@ -9,7 +9,6 @@ import ProductManagementScreen from '../features/Admin/screens/ProductManagement
 import CartScreen from '../features/Cart/screens/CartScreen';
 import CheckoutScreen from '../features/Cart/screens/CheckoutScreen';
 import AdminScreen from '../features/Admin/screens/AdminDashboard';
-import AddProductScreen from '../features/Admin/screens/AddProduct';
 import UserManagementScreen from '../features/Admin/screens/UserManagement';
 import CategoryManagementScreen from '../features/Admin/screens/CategoryManagement';
 import OrderManagementScreen from '../features/Admin/screens/OrderManagement';
@@ -66,7 +65,6 @@ export default function AppNavigator() {
             <Stack.Screen name="Cart" component={CartScreen} />
             <Stack.Screen name="Checkout" component={CheckoutScreen} />
             <Stack.Screen name="Admin" component={AdminScreen} />
-            <Stack.Screen name="AddProduct" component={AddProductScreen} />
             <Stack.Screen name="UserManagement" component={UserManagementScreen} />
             <Stack.Screen name="CategoryManagement" component={CategoryManagementScreen} />
             <Stack.Screen name="OrderManagement" component={OrderManagementScreen} />

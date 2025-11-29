@@ -38,7 +38,6 @@ type RootStackParamList = {
     Explore: undefined;
     CategoryManagement: undefined;
     User: undefined;
-    AddProduct: undefined;
     About: undefined;
     ProductsByCategory: { categoryId: number, categoryName: string };
 };

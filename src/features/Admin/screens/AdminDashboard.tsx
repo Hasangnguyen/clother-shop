@@ -101,15 +101,6 @@ export default function AdminDashboard() {
 
                     <TouchableOpacity
                         style={styles.dashboardButton}
-                        onPress={() => navigation.navigate('AddProduct')}
-                    >
-                        <Text style={styles.buttonIcon}>➕</Text>
-                        <Text style={styles.buttonTitle}>Thêm Sản Phẩm Mới</Text>
-                        <Text style={styles.buttonDescription}>Tạo sản phẩm mới</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={styles.dashboardButton}
                         onPress={() => navigation.navigate('UserManagement')}
                     >
                         <Text style={styles.buttonIcon}>👥</Text>
