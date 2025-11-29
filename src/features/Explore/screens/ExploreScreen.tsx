@@ -119,7 +119,7 @@ export default function ExploreScreen() {
     return (
         <View style={styles.container}>
             <AppHeader />
-            <Text style={styles.heading}>Khám Phá Sản Phẩm</Text>
+            <Text style={styles.heading}>Sản Phẩm</Text>
 
             {/* Search bar */}
             <TextInput

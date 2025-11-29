@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
     View,
     Text,
@@ -48,6 +48,8 @@ export default function HomeScreen() {
     const [products, setProducts] = useState<Product[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
     const { addToCart } = useCart();
+    const categoryListRef = useRef<FlatList>(null);
+    const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
 
     useEffect(() => {
         const loadData = async () => {
@@ -70,6 +72,29 @@ export default function HomeScreen() {
         loadData();
     }, []);
 
+    // Auto-scroll carousel for categories
+    useEffect(() => {
+        if (categories.length === 0) return;
+
+        const itemWidth = 100; // width of each item
+        const itemSpacing = 12; // marginRight
+        const itemTotalWidth = itemWidth + itemSpacing;
+
+        const interval = setInterval(() => {
+            setCurrentCategoryIndex((prevIndex) => {
+                const nextIndex = (prevIndex + 1) % categories.length;
+                const offset = nextIndex * itemTotalWidth;
+                categoryListRef.current?.scrollToOffset({
+                    offset: offset,
+                    animated: true,
+                });
+                return nextIndex;
+            });
+        }, 3000); // Auto-scroll every 3 seconds
+
+        return () => clearInterval(interval);
+    }, [categories.length]);
+
     const formatPrice = (price: number) => {
         return price.toLocaleString('vi-VN');
     };
@@ -80,7 +105,7 @@ export default function HomeScreen() {
 
             {/* Product list */}
             <FlatList
-                data={products}
+                data={products.slice(0, 6)}
                 keyExtractor={(item) => `product-${item.id}`}
                 key={2}
                 // >>> CHANGE 1: Set up 2 columns
@@ -134,21 +159,37 @@ export default function HomeScreen() {
                                 <Text style={styles.quickViewHeading}>Danh Mục Sản Phẩm</Text>
                             </View>
                         </View>
-                        <View style={styles.quickViewGrid}>
+                        <View style={styles.quickViewContainer}>
                             <FlatList
+                                ref={categoryListRef}
                                 data={categories}
                                 keyExtractor={(item) => item.id.toString()}
-                                key={3}
                                 renderItem={({ item }: { item: Category }) => <QuickViewItem item={item} onPress={() => navigation.navigate('ProductsByCategory', { categoryId: item.id, categoryName: item.name })} />}
-                                numColumns={3}
-                                scrollEnabled={false}
-                                columnWrapperStyle={styles.quickViewRow}
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                                contentContainerStyle={styles.quickViewList}
+                                pagingEnabled={false}
+                                snapToInterval={112} // item width (100) + marginRight (12)
+                                decelerationRate="fast"
                             />
                         </View>
                         <View style={styles.sectionHeader}>
                             <Text style={styles.heading}>🛍️ Sản Phẩm Nổi Bật</Text>
                         </View>
                     </View>
+                }
+                ListFooterComponent={
+                    products.length > 6 ? (
+                        <View style={styles.viewMoreContainer}>
+                            <TouchableOpacity 
+                                style={styles.viewMoreButton}
+                                onPress={() => navigation.navigate('Explore')}
+                            >
+                                <MaterialIcons name="explore" size={20} color="#fff" />
+                                <Text style={styles.viewMoreText}>Xem thêm sản phẩm</Text>
+                            </TouchableOpacity>
+                        </View>
+                    ) : null
                 }
                 contentContainerStyle={styles.flatListContentContainer}
             />
@@ -225,28 +266,27 @@ const styles = StyleSheet.create({
     quickViewHeading: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#333',
+        color: '#ff69b4',
     },
-    quickViewGrid: {
-        paddingHorizontal: 10,
-        marginBottom: 5,
+    quickViewContainer: {
+        marginBottom: 20,
     },
-    quickViewRow: {
-        justifyContent: 'space-between',
-        marginBottom: 12,
+    quickViewList: {
+        paddingHorizontal: 15,
+        paddingVertical: 10,
     },
     quickViewItem: {
-        width: '30%',
+        width: 100,
         alignItems: 'center',
-        padding: 8,
+        padding: 12,
         backgroundColor: '#fff',
-        borderRadius: 12,
-        marginHorizontal: 2,
-        elevation: 2,
+        borderRadius: 16,
+        marginRight: 12,
+        elevation: 3,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
+        shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
-        shadowRadius: 2,
+        shadowRadius: 4,
     },
     quickViewIconContainer: {
         width: '100%',
@@ -333,5 +373,28 @@ const styles = StyleSheet.create({
     },
     flatListContentContainer: {
         paddingBottom: 100,
+    },
+    viewMoreContainer: {
+        padding: 20,
+        alignItems: 'center',
+    },
+    viewMoreButton: {
+        backgroundColor: '#ff69b4',
+        paddingHorizontal: 24,
+        paddingVertical: 14,
+        borderRadius: 25,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 3,
+    },
+    viewMoreText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });

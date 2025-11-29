@@ -20,7 +20,7 @@ type RootStackParamList = {
 
 const navItemsData: { label: string; iconName: keyof typeof MaterialIcons.glyphMap; screen: keyof RootStackParamList }[] = [
     { label: "Trang chủ", iconName: "home", screen: "Home" },
-    { label: "Khám Phá", iconName: "explore", screen: "Explore" },
+    { label: "Sản phẩm", iconName: "explore", screen: "Explore" },
     { label: "Giỏ hàng", iconName: "shopping-cart", screen: "Cart" },
     { label: "Cá nhân", iconName: "person", screen: "User" },
 ];
