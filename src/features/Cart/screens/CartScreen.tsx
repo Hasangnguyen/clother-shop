@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 import AppHeader from '../../../components/AppHeader';
 import AppFooter from '../../../components/AppFooter';
 import { useCart } from '../../../context/CartContext';
@@ -18,20 +18,29 @@ export default function CartScreen() {
 
     const renderItem = ({ item }: any) => (
         <View style={styles.item}>
-            <Text style={styles.name}>{item.product.name}</Text>
-            <Text style={styles.price}>{item.product.price.toLocaleString()}₫</Text>
-            <View style={styles.quantityContainer}>
-                <TouchableOpacity onPress={() => updateQuantity(item.product.id, item.quantity - 1)} style={styles.qtyButton}>
-                    <Text style={styles.qtyText}>-</Text>
-                </TouchableOpacity>
-                <Text style={styles.quantity}>{item.quantity}</Text>
-                <TouchableOpacity onPress={() => updateQuantity(item.product.id, item.quantity + 1)} style={styles.qtyButton}>
-                    <Text style={styles.qtyText}>+</Text>
-                </TouchableOpacity>
+            <View style={styles.itemContent}>
+                <Image
+                    source={item.product.img ? { uri: item.product.img } : require('../../../assets/images/products/shop-thoi-trang-nu.jpg')}
+                    style={styles.productImage}
+                    resizeMode="cover"
+                />
+                <View style={styles.itemInfo}>
+                    <Text style={styles.name}>{item.product.name}</Text>
+                    <Text style={styles.price}>{item.product.price.toLocaleString()}₫</Text>
+                    <View style={styles.quantityContainer}>
+                        <TouchableOpacity onPress={() => updateQuantity(item.product.id, item.quantity - 1)} style={styles.qtyButton}>
+                            <Text style={styles.qtyText}>-</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.quantity}>{item.quantity}</Text>
+                        <TouchableOpacity onPress={() => updateQuantity(item.product.id, item.quantity + 1)} style={styles.qtyButton}>
+                            <Text style={styles.qtyText}>+</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <TouchableOpacity onPress={() => removeFromCart(item.product.id)} style={styles.button}>
+                        <Text style={styles.buttonText}>Xóa</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <TouchableOpacity onPress={() => removeFromCart(item.product.id)} style={styles.button}>
-                <Text style={styles.buttonText}>Xóa</Text>
-            </TouchableOpacity>
         </View>
     );
 
@@ -100,6 +109,19 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
         elevation: 2,
+    },
+    itemContent: {
+        flexDirection: 'row',
+        gap: 15,
+    },
+    productImage: {
+        width: 100,
+        height: 100,
+        borderRadius: 8,
+        backgroundColor: '#f0f0f0',
+    },
+    itemInfo: {
+        flex: 1,
     },
     name: {
         fontSize: 16, fontWeight: '500'
